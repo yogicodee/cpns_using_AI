@@ -1,0 +1,8 @@
+{
+  "name": "CPNS Score Analytics & Ranking System",
+  "description": "Production-ready Score Analytics, Ranking & Leaderboard engine featuring passing score (passing grade) verification, detailed subscore breakdowns (TWK, TIU, TKP), history logger, and AI-powered performance analysis for CPNS exam preparation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
