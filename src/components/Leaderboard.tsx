@@ -212,3 +212,19 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
                           {participant.scores.tkp}
                         </span>
                       </td>
+
+                      {/* PG Status Column */}
+                      <td className="px-5 py-3 text-center">
+                        <div className="flex justify-center">
+                          {participant.isPassed ? (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[9.5px] font-bold text-emerald-700 border border-emerald-150">
+                              <CheckCircle className="h-3 w-3 text-emerald-600" /> Lulus PG
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-2 py-0.5 text-[9.5px] font-bold text-rose-700 border border-rose-150">
+                              <XCircle className="h-3 w-3 text-rose-600" /> Gagal PG
+                            </span>
+                          )}
+                        </div>
+                      </td>
+
