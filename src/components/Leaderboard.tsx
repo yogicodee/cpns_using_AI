@@ -156,3 +156,59 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
               {candidates.map((participant) => {
                 const isMe = participant.userId === 'current-user';
                 const isExpanded = expandedId === participant.id;
+
+                return (
+                  <React.Fragment key={participant.id}>
+                    <tr
+                      onClick={() => toggleExpand(participant.id)}
+                      className={`transition-all duration-200 cursor-pointer text-xs ${isMe
+                        ? 'bg-indigo-50/[0.22] hover:bg-indigo-50/[0.4] border-l-4 border-indigo-650'
+                        : 'hover:bg-slate-50/65'
+                        }`}
+                    >
+                      {/* Rank Column */}
+                      <td className="px-5 py-3 text-center font-bold text-slate-800">
+                        <div className="flex items-center justify-center">
+                          {getRankBadge(participant.rank || 0)}
+                        </div>
+                      </td>
+
+                      {/* Name Card */}
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={participant.userAvatar}
+                            alt={participant.userName}
+                            referrerPolicy="no-referrer"
+                            className="h-8 w-8 rounded-full border border-slate-200 bg-slate-100 object-cover"
+                          />
+                          <div>
+                            <span className="font-bold text-slate-800 block">
+                              {participant.userName}
+                              {isMe && (
+                                <span className="ml-1.5 inline-flex items-center rounded-full bg-indigo-50 text-indigo-700 border border-indigo-150 px-2 py-0.5 text-[8.5px] font-black">
+                                  Anda
+                                </span>
+                              )}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-semibold block truncate max-w-[150px] sm:max-w-xs">{participant.title}</span>
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* Sub-Scores (Hidden Mobile) */}
+                      <td className="px-4 py-3 text-center font-mono font-bold hidden md:table-cell text-slate-650">
+                        <span className={participant.scores.twk >= 65 ? 'text-slate-650' : 'text-rose-600 font-extrabold'}>
+                          {participant.scores.twk}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-center font-mono font-bold hidden md:table-cell text-slate-650">
+                        <span className={participant.scores.tiu >= 80 ? 'text-slate-650' : 'text-rose-600 font-extrabold'}>
+                          {participant.scores.tiu}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-center font-mono font-bold hidden md:table-cell text-slate-650">
+                        <span className={participant.scores.tkp >= 166 ? 'text-slate-650' : 'text-rose-600 font-extrabold'}>
+                          {participant.scores.tkp}
+                        </span>
+                      </td>
