@@ -85,3 +85,30 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
             <p className="text-[11px] text-slate-500 font-medium">Peringkat real-time dihitung dari skor tertinggi unik setiap pelamar</p>
           </div>
         </div>
+
+        {/* Filters Group */}
+        <div className="flex flex-col sm:flex-row gap-2.5">
+          {/* Searching */}
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 bg-transparent -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Cari nama peserta..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full sm:w-52 rounded-lg border border-slate-250 bg-slate-50 pl-8.5 pr-3 py-1.5 text-xs text-slate-800 font-semibold focus:bg-white focus:border-indigo-500/50 focus:outline-none transition shadow-xs"
+            />
+          </div>
+
+          {/* Passed Filter */}
+          <label className="inline-flex items-center gap-2 cursor-pointer bg-slate-50 border border-slate-250 px-3 py-1.5 rounded-lg text-xs text-slate-600 hover:text-slate-800 transition shadow-xs group">
+            <input
+              type="checkbox"
+              checked={onlyPassed}
+              onChange={(e) => setOnlyPassed(e.target.checked)}
+              className="rounded-md border-slate-300 h-4 w-4 text-indigo-650 focus:ring-indigo-500 accent-indigo-600 cursor-pointer"
+            />
+            <span className="font-bold select-none text-[11px]">Hanya Lulus PG</span>
+          </label>
+        </div>
+      </div>
