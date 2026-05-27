@@ -70,4 +70,18 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
       default:
         return <span className="text-slate-500 font-mono text-xs font-black">{rank}</span>;
     }
-  }; 
+  };
+
+  return (
+    <div id={id} className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm relative">
+      {/* Search Header Options */}
+      <div className="p-4.5 border-b border-slate-200 bg-[#fbfcfd] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650 border border-indigo-100">
+            <Trophy className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <h4 className="text-sm.5 font-bold text-slate-800 flex items-center gap-2">Peringkat Nasional Tryout CPNS</h4>
+            <p className="text-[11px] text-slate-500 font-medium">Peringkat real-time dihitung dari skor tertinggi unik setiap pelamar</p>
+          </div>
+        </div>
