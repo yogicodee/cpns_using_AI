@@ -47,3 +47,27 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
     setExpandedId(expandedId === id ? null : id);
   };
 
+  const getRankBadge = (rank: number) => {
+    switch (rank) {
+      case 1:
+        return (
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-black shadow-xs">
+            🥇
+          </span>
+        );
+      case 2:
+        return (
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 border border-slate-205 text-slate-700 text-xs font-black shadow-xs">
+            🥈
+          </span>
+        );
+      case 3:
+        return (
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-50/50 border border-amber-200/60 text-amber-600 text-xs font-black shadow-xs">
+            🥉
+          </span>
+        );
+      default:
+        return <span className="text-slate-500 font-mono text-xs font-black">{rank}</span>;
+    }
+  }; 
