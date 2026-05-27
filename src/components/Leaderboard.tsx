@@ -238,3 +238,58 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
                         {isExpanded ? <ChevronUp className="h-3.5 w-3.5 mx-auto" /> : <ChevronDown className="h-3.5 w-3.5 mx-auto" />}
                       </td>
                     </tr>
+
+                    {/* Expandable Panel */}
+                    {isExpanded && (
+                      <tr className={isMe ? 'bg-indigo-50/[0.1]' : 'bg-slate-50/45'}>
+                        <td colSpan={8} className="px-5 py-3.5 border-l-2 border-r border-b border-indigo-100 border-slate-150 shadow-inner">
+                          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-semibold">
+                            <div className="space-y-1">
+                              <span className="text-slate-400 text-[9px] uppercase font-bold tracking-wider">Metrik CPNS</span>
+                              <p className="text-slate-700 font-bold">Peserta ke-{participant.rank} Terbaik dari {candidates.length}</p>
+                              <p className="text-slate-500 font-semibold">Berada di top <span className="font-extrabold text-indigo-650">{participant.percentile}%</span> Nasional</p>
+                            </div>
+
+                            <div className="space-y-1">
+                              <span className="text-slate-400 text-[9px] uppercase font-bold tracking-wider">Breakdown Nilai SKD</span>
+                              <div className="flex flex-col gap-0.5 font-mono text-[11px]">
+                                <div className="flex justify-between w-28">
+                                  <span>TWK (Min 65):</span>
+                                  <span className={`font-black ${participant.scores.twk >= 65 ? 'text-indigo-650' : 'text-rose-600'}`}>{participant.scores.twk}</span>
+                                </div>
+                                <div className="flex justify-between w-28">
+                                  <span>TIU (Min 80):</span>
+                                  <span className={`font-black ${participant.scores.tiu >= 80 ? 'text-indigo-650' : 'text-rose-600'}`}>{participant.scores.tiu}</span>
+                                </div>
+                                <div className="flex justify-between w-28">
+                                  <span>TKP (Min 166):</span>
+                                  <span className={`font-black ${participant.scores.tkp >= 166 ? 'text-indigo-650' : 'text-rose-600'}`}>{participant.scores.tkp}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="space-y-1">
+                              <span className="text-slate-400 text-[9px] uppercase font-bold tracking-wider">Durasi & Selesai</span>
+                              <p className="text-slate-700">Waktu: <span className="font-bold text-slate-800">{Math.floor(participant.durationSeconds / 60)} menit {participant.durationSeconds % 60} det</span></p>
+                              <p className="text-slate-400 font-mono text-[9px]">Submitted: {new Date(participant.submittedAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+                            </div>
+
+                            <div className="space-y-1">
+                              <span className="text-slate-400 text-[9px] uppercase font-bold tracking-wider">Informasi Nilai</span>
+                              <p className="text-slate-600">Benar: <span className="font-bold text-indigo-600 font-mono">{participant.correctAnswers}</span>, Salah: <span className="font-bold text-rose-500 font-mono">{participant.wrongAnswers}</span></p>
+                              <p className="text-slate-400 text-[10px]">Ketepatan akurasi: {Math.round((participant.correctAnswers / 110) * 100)}%</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
