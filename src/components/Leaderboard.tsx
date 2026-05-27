@@ -228,3 +228,13 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ id, refreshTrigger }) 
                         </div>
                       </td>
 
+                      {/* Total Score Column */}
+                      <td className="px-5 py-3 text-right font-black font-mono text-slate-900 text-sm">
+                        {participant.totalScore}
+                      </td>
+
+                      {/* Toggle arrow */}
+                      <td className="px-4 py-3 text-center text-slate-400">
+                        {isExpanded ? <ChevronUp className="h-3.5 w-3.5 mx-auto" /> : <ChevronDown className="h-3.5 w-3.5 mx-auto" />}
+                      </td>
+                    </tr>
