@@ -14,3 +14,5 @@ interface CodeSnippet {
     icon: React.ReactNode;
     content: string;
 }
+
+export const LaravelCodeVault: React.FC = () => { const [activeTab, setActiveTab] = useState('structure'); const [copiedId, setCopiedId] = useState<string | null>(null); const handleCopy = (id: string, text: string) => { navigator.clipboard.writeText(text); setCopiedId(id); setTimeout(() => setCopiedId(null), 2000); };
