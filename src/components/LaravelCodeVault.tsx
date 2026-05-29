@@ -96,3 +96,19 @@ return new class extends Migration
             ], 'cpns_ranking_tie_breaker_idx');
         });
     }
+
+
+    public function down(): void
+    {
+        Schema::dropIfExists('tryout_results');
+    }
+};`
+        },
+        {
+            id: 'models',
+            name: 'Eloquent Models',
+            path: 'app/Models/TryoutResult.php & User.php',
+            lang: 'php',
+            icon: <GitFork className="h-4 w-4" />,
+            content: `// app/Models/TryoutResult.php
+namespace App\\Models;
