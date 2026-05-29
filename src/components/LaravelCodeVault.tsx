@@ -112,3 +112,40 @@ return new class extends Migration
             icon: <GitFork className="h-4 w-4" />,
             content: `// app/Models/TryoutResult.php
 namespace App\\Models;
+
+use Illuminate\\Database\\Eloquent\\Concerns\\HasUuids;
+use Illuminate\\Database\\Eloquent\\Model;
+use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;
+
+class TryoutResult extends Model
+{
+    use HasUuids;
+
+    protected $fillable = [
+        'user_id',
+        'title',
+        'twk_score',
+        'tiu_score',
+        'tkp_score',
+        'total_score',
+        'correct_answers',
+        'wrong_answers',
+        'duration_seconds',
+        'is_passed',
+        'submitted_at',
+    ];
+
+    protected $casts = [
+        'is_passed' => 'boolean',
+        'submitted_at' => 'datetime',
+        'twk_score' => 'integer',
+        'tiu_score' => 'integer',
+        'tkp_score' => 'integer',
+        'total_score' => 'integer',
+    ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
