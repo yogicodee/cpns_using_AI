@@ -167,3 +167,12 @@ class User extends Authenticatable
     }
 }`
         },
+
+        {
+            id: 'repository',
+            name: 'Repository Layer',
+            path: 'app/Repositories/Eloquent/TryoutResultRepository.php',
+            lang: 'php',
+            icon: <Layers className="h-4 w-4" />,
+            content: `// app/Repositories/Interfaces/TryoutResultRepositoryInterface.php
+namespace App\\Repositories\\Interfaces;
