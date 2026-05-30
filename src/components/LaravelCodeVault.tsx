@@ -149,3 +149,10 @@ class TryoutResult extends Model
         return $this->belongsTo(User::class);
     }
 }
+
+// -------------------------------------------------------------
+// app/Models/User.php
+namespace App\\Models;
+
+use Illuminate\\Database\\Eloquent\\Relations\\HasMany;
+use Illuminate\\Foundation\\Auth\\User as Authenticatable;
