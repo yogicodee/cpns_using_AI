@@ -156,3 +156,14 @@ namespace App\\Models;
 
 use Illuminate\\Database\\Eloquent\\Relations\\HasMany;
 use Illuminate\\Foundation\\Auth\\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    // ... Sanctum configuration
+
+    public function tryoutResults(): HasMany
+    {
+        return $this->hasMany(TryoutResult::class);
+    }
+}`
+        },
