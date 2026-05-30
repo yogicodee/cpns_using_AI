@@ -187,3 +187,25 @@ interface TryoutResultRepositoryInterface
     public function store(array $data): TryoutResult;
     public function getLeaderboard(bool $onlyPassed = false, ?string $search = null): Collection;
 }
+// -------------------------------------------------------------
+// app/Repositories/Eloquent/TryoutResultRepository.php
+namespace App\\Repositories\\Eloquent;
+
+use App\\Models\\TryoutResult;
+use App\\Repositories\\Interfaces\\TryoutResultRepositoryInterface;
+use Illuminate\\Support\\Collection;
+use Illuminate\\Support\\Facades\\DB;
+
+class TryoutResultRepository implements TryoutResultRepositoryInterface
+{
+    public function getByUser(int $userId): Collection
+    {
+        return TryoutResult::where('user_id', $userId)
+            ->orderBy('submitted_at', 'desc')
+            ->get();
+    }
+
+    public function store(array $data): TryoutResult
+    {
+        return TryoutResult::create($data);
+    }
