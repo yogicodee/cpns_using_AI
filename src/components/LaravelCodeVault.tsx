@@ -176,3 +176,14 @@ class User extends Authenticatable
             icon: <Layers className="h-4 w-4" />,
             content: `// app/Repositories/Interfaces/TryoutResultRepositoryInterface.php
 namespace App\\Repositories\\Interfaces;
+
+
+use App\\Models\\TryoutResult;
+use Illuminate\\Support\\Collection;
+
+interface TryoutResultRepositoryInterface
+{
+    public function getByUser(int $userId): Collection;
+    public function store(array $data): TryoutResult;
+    public function getLeaderboard(bool $onlyPassed = false, ?string $search = null): Collection;
+}
